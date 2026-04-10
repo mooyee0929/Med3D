@@ -1,0 +1,38 @@
+data:
+  root: data/raw/brats2023
+  modality: t1c          # t1c | t1n | t2f | t2w
+  slice_axis: 2          # 0=sagittal, 1=coronal, 2=axial
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  image_size: [182, 218]
+
+gaussian:
+  num_gaussians: 100000
+  sh_degree: 0           # 0 = grayscale (no spherical harmonics color)
+  position_lr: 1.6e-4
+  feature_lr: 2.5e-3
+  opacity_lr: 0.05
+  scaling_lr: 5.0e-3
+  rotation_lr: 1.0e-3
+  lambda_dssim: 0.2
+
+training:
+  iterations: 30000
+  test_iterations: [7000, 15000, 30000]
+  save_iterations: [7000, 15000, 30000]
+  densify_from_iter: 500
+  densify_until_iter: 15000
+  densify_grad_threshold: 0.0002
+
+rendering:
+  target_fps: 30
+  resolution: [480, 480]
+
+evaluation:
+  metrics: [psnr, ssim, lpips]
+
+logging:
+  use_wandb: false
+  use_tensorboard: true
+  log_dir: logs/

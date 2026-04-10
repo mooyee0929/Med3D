@@ -1,0 +1,67 @@
+# Data files
+Data/
+*.nii.gz
+*.nii
+*.mha
+*.dcm
+*.dicom
+
+# Large model exports
+exports/
+*.obj
+*.ply
+*.mtl
+
+# Model checkpoints
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Logs and outputs
+*.log
+wandb/
+logs/*/
+events.out.tfevents.*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Jupyter notebooks
+*.ipynb
+checkpoints/
+.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Large media files
+*.mp4
+*.avi
+*.mov
+*.mkv

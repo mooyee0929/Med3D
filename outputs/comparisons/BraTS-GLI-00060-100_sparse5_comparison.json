@@ -1,0 +1,59 @@
+[
+  {
+    "method": "Gaussian Splatting",
+    "mean_psnr": 38.08897793292999,
+    "training_time_s": 0.0,
+    "memory_mb": 5.16455078125,
+    "num_parameters": 96643,
+    "fps": 5.415294431608617,
+    "model_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_gs.ply",
+    "volume_nifti_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_gs_volume.nii.gz"
+  },
+  {
+    "method": "Baseline Voxel Grid",
+    "mean_psnr": 32.09698193648766,
+    "training_time_s": 151.40807580947876,
+    "memory_mb": 0.0,
+    "num_parameters": 7221032,
+    "fps": 0.9548743241554403,
+    "model_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_baseline.pt",
+    "volume_nifti_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_baseline_volume.nii.gz"
+  },
+  {
+    "method": "Direct Volume Rendering",
+    "mean_psnr": 30.260010468108312,
+    "training_time_s": 0.0,
+    "memory_mb": 5.6000213623046875,
+    "num_parameters": 0,
+    "fps": 5264.8471207451785,
+    "volume_nifti_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_dvr_volume.nii.gz"
+  },
+  {
+    "method": "Max Intensity Projection",
+    "mean_psnr": 11.391245792651999,
+    "training_time_s": 0.0,
+    "memory_mb": 5.6000213623046875,
+    "num_parameters": 0,
+    "fps": 3905.837684398461,
+    "volume_nifti_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_mip_volume.nii.gz"
+  },
+  {
+    "method": "Cubic Spline",
+    "mean_psnr": 40.47785949707031,
+    "training_time_s": 0.0,
+    "memory_mb": 5.6000213623046875,
+    "num_parameters": 0,
+    "fps": 380.44882613836114,
+    "volume_nifti_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_spline_volume.nii.gz"
+  },
+  {
+    "method": "3D U-Net Interp",
+    "mean_psnr": 31.57290001069346,
+    "training_time_s": 0.0,
+    "memory_mb": 0.0,
+    "num_parameters": 339569,
+    "fps": 198.68775551674412,
+    "model_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_unet3d.pt",
+    "volume_nifti_path": "outputs/comparisons/BraTS-GLI-00060-100_sparse5_unet3d_volume.nii.gz"
+  }
+]

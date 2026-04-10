@@ -1,0 +1,35 @@
+name: medvision3d
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch=2.1.0
+  - torchvision=0.16.0
+  - pytorch-cuda=11.8
+  - cudatoolkit=11.8
+  - pip
+  - numpy
+  - scipy
+  - matplotlib
+  - pillow
+  - tqdm
+  - pip:
+    - nibabel          # NIfTI MRI file I/O
+    - nilearn          # neuroimaging data processing
+    - SimpleITK        # medical image processing
+    - monai            # medical image deep learning
+    - open3d           # 3D point cloud / visualization
+    - plyfile          # PLY file I/O (3DGS output format)
+    - scikit-image     # PSNR, SSIM metrics
+    - lpips            # perceptual similarity metric
+    - einops
+    - wandb            # experiment tracking
+    - hydra-core       # config management
+    - omegaconf
+    - tensorboard
+    - opencv-python-headless
+    - trimesh
+    - pyrender
