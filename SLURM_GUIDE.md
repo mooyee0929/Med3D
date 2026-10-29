@@ -2,6 +2,14 @@
 
 Quick reference for submitting jobs to SLURM clusters.
 
+Every script `cd`s into `$MEDVISION3D_DIR`, so export it before submitting:
+
+```bash
+export MEDVISION3D_DIR=/path/to/Med3D
+```
+
+Plain `sbatch` passes your environment through. When you add `--export`, keep `ALL,` in front so the variable is still passed.
+
 ## Script Overview: What Gets Executed
 
 ```
@@ -29,10 +37,10 @@ Inspect and verify MRI data before training. **Run this first!**
 sbatch scripts/explore.slurm
 
 # Inspect single case (detailed analysis)
-sbatch --export=MODE=inspect,CASE=BraTS-GLI-00005-100 scripts/explore.slurm
+sbatch --export=ALL,MODE=inspect,CASE=BraTS-GLI-00005-100 scripts/explore.slurm
 
 # Pipeline smoke-test (small 1k Gaussian test)
-sbatch --export=MODE=pipeline,CASE=BraTS-GLI-00005-100,N_GAUSS=1000 scripts/explore.slurm
+sbatch --export=ALL,MODE=pipeline,CASE=BraTS-GLI-00005-100,N_GAUSS=1000 scripts/explore.slurm
 ```
 
 **Modes:**
@@ -56,7 +64,7 @@ Train the 3D Gaussian Splatting model on a specified MRI case.
 sbatch scripts/train.slurm
 
 # Custom case and iterations
-sbatch --export=CASE_ID=BraTS-GLI-00005-100,ITERS=50000 scripts/train.slurm
+sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100,ITERS=50000 scripts/train.slurm
 ```
 
 **Output:**
@@ -75,10 +83,10 @@ Compare Gaussian Splatting with traditional reconstruction methods.
 sbatch scripts/compare.slurm
 
 # Custom case and methods
-sbatch --export=CASE_ID=BraTS-GLI-00005-100,METHODS="gs,dvr,mip" scripts/compare.slurm
+sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100,METHODS="gs,dvr,mip" scripts/compare.slurm
 
 # Adjusted Gaussian count
-sbatch --export=CASE_ID=BraTS-GLI-00005-100,N_GAUSS=50000 scripts/compare.slurm
+sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100,N_GAUSS=50000 scripts/compare.slurm
 ```
 
 **Output:**
@@ -105,7 +113,7 @@ Run the complete 5-step pipeline in one job: data loading → preprocessing → 
 sbatch scripts/pipeline.slurm
 
 # Custom case with extended training
-sbatch --export=CASE_ID=BraTS-GLI-00005-100,N_GAUSS=150000,ITERS=50000 scripts/pipeline.slurm
+sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100,N_GAUSS=150000,ITERS=50000 scripts/pipeline.slurm
 ```
 
 **What it runs (in order):**
@@ -135,11 +143,11 @@ sbatch scripts/explore.slurm
 
 # Wait for completion, then:
 # Step 2: Train Gaussian Splatting (30-60 min)
-sbatch --export=CASE_ID=BraTS-GLI-00005-100 scripts/train.slurm
+sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100 scripts/train.slurm
 
 # Wait for completion, then:
 # Step 3: Benchmark vs traditional methods (20-40 min)
-sbatch --export=CASE_ID=BraTS-GLI-00005-100 scripts/compare.slurm
+sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100 scripts/compare.slurm
 
 # Total time: 1-2 hours
 # Advantages:
@@ -179,13 +187,13 @@ sbatch scripts/explore.slurm
 
 # Step 2: Train multiple cases in parallel
 for CASE in BraTS-GLI-00005-100 BraTS-GLI-00005-101 BraTS-GLI-00005-102; do
-  sbatch --export=CASE_ID=$CASE scripts/train.slurm
+  sbatch --export=ALL,CASE_ID=$CASE scripts/train.slurm
 done
 
 # Wait for all to finish, then:
 # Step 3: Compare each case
 for CASE in BraTS-GLI-00005-100 BraTS-GLI-00005-101 BraTS-GLI-00005-102; do
-  sbatch --export=CASE_ID=$CASE scripts/compare.slurm
+  sbatch --export=ALL,CASE_ID=$CASE scripts/compare.slurm
 done
 ```
 
@@ -198,11 +206,11 @@ sbatch scripts/explore.slurm
 
 # Step 2: Train with different parameters (parallel)
 for N_GAUSS in 50000 100000 150000; do
-  sbatch --export=CASE_ID=BraTS-GLI-00005-100,N_GAUSS=$N_GAUSS scripts/train.slurm
+  sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100,N_GAUSS=$N_GAUSS scripts/train.slurm
 done
 
 # Step 3: Compare all runs
-sbatch --export=CASE_ID=BraTS-GLI-00005-100 scripts/compare.slurm
+sbatch --export=ALL,CASE_ID=BraTS-GLI-00005-100 scripts/compare.slurm
 ```
 
 ### Quick Decision Tree
@@ -284,7 +292,7 @@ scancel <jobid>
 Export custom values with `-–export`:
 
 ```bash
-sbatch --export=CASE_ID=MyCase,N_GAUSS=50000,ITERS=50000 scripts/train.slurm
+sbatch --export=ALL,CASE_ID=MyCase,N_GAUSS=50000,ITERS=50000 scripts/train.slurm
 ```
 
 ### train.slurm

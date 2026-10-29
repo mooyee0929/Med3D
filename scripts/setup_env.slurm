@@ -8,7 +8,8 @@
 #SBATCH --output=logs/setup_%j.log
 
 set -e
-cd /scratch/eecs504s001w26_class_root/eecs504s001w26_class/fsyang/MedVision3D
+: "${MEDVISION3D_DIR:?Set MEDVISION3D_DIR to the repository root, e.g. sbatch --export=ALL,MEDVISION3D_DIR=/path/to/repo}"
+cd "${MEDVISION3D_DIR}"
 
 echo "=== Creating conda environment: medvision3d ==="
 source ~/miniconda3/etc/profile.d/conda.sh

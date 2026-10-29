@@ -1,7 +1,5 @@
 # MedVision3D: Interactive 3D Visualization from MRI Slices Using Gaussian Splatting
 
-**EECS 504 — Computer Vision, Winter 2026**
-
 ## 1. Introduction
 
 Medical imaging, particularly MRI, generates volumetric data as a stack of 2D slices. Traditional volume rendering methods (direct volume rendering, maximum intensity projection) provide basic visualization but lack the ability to interpolate between acquired slices or produce high-fidelity novel views. This project adapts **3D Gaussian Splatting (3DGS)** — originally designed for photogrammetric scene reconstruction — to MRI volume reconstruction, replacing RGB color with scalar tissue intensity and rendering fixed slice planes instead of arbitrary camera views.
