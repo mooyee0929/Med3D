@@ -20,12 +20,12 @@ Usage
 
   # Compare GT vs GS only
   python visualize.py compare outputs/comparisons/BraTS-GLI-00005-100_gs_volume.nii.gz \
-      --gt /scratch/eecs504s001w26_class_root/eecs504s001w26_class/fsyang/Data/BraTS-GLI/train/BraTS-GLI-00005-100/BraTS-GLI-00005-100-t1c.nii.gz \
+      --gt ../Data/BraTS-GLI/train/BraTS-GLI-00005-100/BraTS-GLI-00005-100-t1c.nii.gz \
       --save
 
   # Compare GT vs GS + Baseline + DVR + MIP
   python visualize.py compare outputs/comparisons/BraTS-GLI-00005-100_gs_volume.nii.gz \
-      --gt /scratch/eecs504s001w26_class_root/eecs504s001w26_class/fsyang/Data/BraTS-GLI/train/BraTS-GLI-00005-100/BraTS-GLI-00005-100-t1c.nii.gz \
+      --gt ../Data/BraTS-GLI/train/BraTS-GLI-00005-100/BraTS-GLI-00005-100-t1c.nii.gz \
       --also outputs/comparisons/BraTS-GLI-00005-100_baseline_volume.nii.gz \
       --also outputs/comparisons/BraTS-GLI-00005-100_dvr_volume.nii.gz \
       --also outputs/comparisons/BraTS-GLI-00005-100_mip_volume.nii.gz \
